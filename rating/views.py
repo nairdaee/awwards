@@ -134,3 +134,15 @@ def project(request, project_id):
         form = RatingForm()
     return render(request, "project.html",{"project":project,"profile":profile,"ratings":ratings,"form":form, "message":message, 'total_design':total_design, 'total_usability':total_usability, 'total_creativity':total_creativity, 'total_content':total_content})
 
+class ProjectList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
+    def post(self, request, format=None):
+        serializers = ProfileSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
