@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<br>
+<br>
+<h1 style="text-align: center;">Log in</h1>
+
+<form class="site-form" action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    {% if request.GET.next %} <!--checks if query parameter next exists,if it does we-->
+    <input type="hidden"name="next" value="{{request.GET.next}}"> <!--output this hidden input-->
+    {% endif %}
+<input type="submit" value="Login"><!--so that now when we make this post request,it will be accompanied by the value we got above-->
+<p>Dont have an account yet? <a href="{%url 'accounts:signup' %}" >Signup</a></p>
+</form>
+{% endblock%}
