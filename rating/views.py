@@ -134,6 +134,19 @@ def project(request, project_id):
         form = RatingForm()
     return render(request, "project.html",{"project":project,"profile":profile,"ratings":ratings,"form":form, "message":message, 'total_design':total_design, 'total_usability':total_usability, 'total_creativity':total_creativity, 'total_content':total_content})
 
+class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
+    def post(self, request, format=None):
+        serializers = ProfileSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class ProjectList(APIView):
     permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
@@ -146,3 +159,29 @@ class ProjectList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ProfileDescription(APIView):
+
+    def get_profile(self, pk):
+        try:
+            return Profile.objects.get(pk=pk)
+        except Profile.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        profile = self.get_profile(pk)
+        serializers = ProfileSerializer(profile)
+        return Response(serializers.data)
+
+class ProjectDescription(APIView):
+    
+    def get_project(self, pk):
+        try:
+            return Project.objects.get(pk=pk)
+        except Project.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        project = self.get_project(pk)
+        serializers = ProjectSerializer(project)
+        return Response(serializers.data)
