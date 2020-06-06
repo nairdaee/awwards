@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <br>
+  <br>
+  <div class="result">
+    {% if projects %}
+      <h2 class="result-message">Found {{projects|length }} project(s) related to {{message}}</h2>
+    {% else %}
+      <h3 class="result-message"> Found no projects related to {{message}}</h3>
+    {% endif %}
+    <hr>
+    <br>
+    <div class="photos">
+      {% for project in projects%}
+       <div class= "photo">
+         <h2 class="head">{{project.title}}</h2>
+         <a><img style="width:60%;height:50%;margin-left:10%" src="{{project.landing_page.url}}"></a>
+         <hr>
+         <p class="bodies">{{project.description |truncatechars_html:170}}</p>
+         <a class="view" href='http://{{project.live_link}}'>View project</a>
+         <a href="/project/{{project.id}}" class="view2"><span class='owner'> Review</span></a>
+       </div>
+      {% endfor %}
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+
+{% endblock %}
+
+
