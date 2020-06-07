@@ -1,0 +1,66 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="{%url 'index'%}"><img src="https://previews.123rf.com/images/asmati/asmati1706/asmati170606450/80933334-letter-a-sign-design-template-element-vector-white-icon-with-soft-shadow-on-transparent-background-.jpg" class="rounded-circle z-depth-0"
+      alt="avatar image" height="35" width="35"></a>
+  
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'index'%}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'post'%}">Post</a>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item avatar dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="{{profile.profilepic.url}}" class="rounded-circle z-depth-0"
+              alt="avatar image" height="35" width="35">
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+            aria-labelledby="navbarDropdownMenuLink-55">
+            <div class="signup">
+                {%if user.is_authenticated %}    <!--Interchanges login/log out buttons depending on user's state-->
+                      <form class="signup1" action="{% url 'accounts:logout' %}" method="post">                          
+                          {% csrf_token %}
+                          <button type="submit" class="signup1">Logout</button>
+                      </form>
+                  {% else %}
+                    <a href="{%url 'accounts:login' %}" >Login</a>
+                    <br>
+                    <a href="{%url 'accounts:signup' %}" >Signup</a>
+                    <br>
+                    <a class="dropdown-item" href="{% url 'edit' %}">Edit profile</a>
+                  {% endif %}
+                  <hr>
+              <a href="{%url 'myprofile'%}"><strong>My profile</strong></a>
+              </div>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-1" role="search" action="{% url 'search' %}">
+        <div class="md-form form-sm my-0">
+          <input type="text" class="form-control" placeholder="Search" name="project">
+        </div>
+        <button class="btn btn-outline-white btn-sm my-0" type="submit">Search</button>
+      </form>
+    </div>
+    <!-- Collapsible content -->
+  
+  </nav>
+  

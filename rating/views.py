@@ -11,11 +11,10 @@ from .permissions import IsAdminOrReadOnly
 from django.core.exceptions import ObjectDoesNotExist
 
 
-@login_required(login_url='/accounts/login')
 def index(request):
     current_user = request.user
     projects = Project.objects.order_by('-overall').all()
-    top = projects[0]
+    #top = projects[0]
     runners=Project.objects.all()[:4]
     try:
         current_user = request.user

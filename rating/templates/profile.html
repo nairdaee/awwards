@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles%}
+{{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<header>
+
+		<div class="container">
+	
+			<div class="profile">
+	
+				<div class="profile-image">
+						{% if my_profile %}
+						<img class="img-fluid rounded-circle" src="{{my_profile.profilepic.url}}" alt="profile" height="100" width="150">
+				</div>
+	
+				<div class="profile-user-settings">
+	
+					<h1 class="profile-user-name">{{my_profile.user}}</h1>
+	
+					<a href="{%url 'edit'%}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+	
+				</div>
+				
+	
+				<div class="profile-bio">
+	
+					<p><span class="profile-real-name">{{user}}</span> {{i.bio}}</p>
+	
+				</div>
+				{%else%}
+				<div class="alert">
+				<p class="animated fadeIn alert alert-info">Update profile first <br>
+				<a href="{%url 'edit'%}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+				</p>
+
+        		</div>
+        		{%endif%}
+			</div>
+			<!-- End of profile section -->
+	
+		</div>
+		<!-- End of container -->
+	
+	</header>
+    
+<div class="container">
+    <br>
+    {% if projects %}
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-md-4">
+            <div class="card">
+                    <img class="card-img-top" src="{{project.landing_page.url}}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text"><strong>{{project.title}}</strong>: {{project.description | truncatechars_html:170}}</p>
+                      <a href="http://{{project.live_link}}" class="btn btn-primary">Live site</a>
+                      <a href="/project/{{project.id}}" class="btn btn-primary">Review</a>
+                    </div>
+                  </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="animated fadeIn alert alert-info">No projects posted yet <br>
+    {% endif %}
+</div>
+{% endblock %}

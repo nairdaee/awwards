@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+  <br>
+  <br>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card" >
+              <div class="view overlay">
+                <img class="card-img-top" src="{{project.landing_page.url}}" alt="Card image cap">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <div class="card-body elegant-color white-text rounded-bottom">
+                <a class="activator waves-effect mr-4"></a>
+                <h4 class="card-title"> {{project.title}}</h4>
+                <hr class="hr-light">
+                <div style="height: 50px">
+                    <p class="card-text white-text mb-4">{{project.description |truncatechars_html:170}}</p>
+                </div>
+               
+                <p class="card-text"><strong>By</strong>: {{project.user}}</p>
+                <a href="http://{{project.live_link}}" class="white-text d-flex justify-content-end"><h5>Live site <i class="fas fa-angle-double-right"></i></h5></a>
+            
+              </div>
+            
+            </div>
+      </div>
+      
+  </div>
+  <br>
+  <br>
+</div>
+<div class="container-fluid">
+   
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="card border-primary">
+                <div class="card-header">Make a Vote</div>
+                <p>Note that a user can only vote once per project</p>
+                <div class="card-body text-primary">
+                    <form  action="/project/{{project.id}}" method="post" enctype="multipart/form-data" id="votes-form">
+                      {%csrf_token%}
+                    
+                      {% bootstrap_form form%}
+                      <div class="text-center">
+                      <input id="votes-input"type="submit" class="btn btn-success btn-lg" value="Post">
+                    </div>
+                    </form>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Username</th>
+                  <th scope="col">Design</th>
+                  <th scope="col">Usability</th>
+            
+                  <th scope="col">Creativity</th>
+                  <th scope="col">Content</th>
+                  <th scope="col">Overall Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                    {% if ratings%}
+                {% for rating in ratings%}
+                <tr>
+                  <td>{{rating.profile.user}}</td>
+                  <td>{{rating.design}}</td>
+                  <td>{{rating.usability}}</td>
+                  <td>{{rating.creativity}}</td>
+                  <td>{{rating.content}}</td>
+                  <td>{{rating.overall_score}}</td>
+                </tr>
+            
+            {% endfor%}
+            </tbody>
+            </table>
+            <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Avarage</th>
+                    <th scope="col">Design</th>
+                    <th scope="col">Usability</th>
+              
+                    <th scope="col">Creativity</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Overall Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Average</td>
+                    <td>{{total_design}}</td>
+                    <td>{{total_usability}}</td>
+                    <td>{{total_creativity}}</td>
+                    <td>{{total_content}}</td>
+                    <td>{{project.overall}}</td>
+                  </tr>
+
+              </tbody>
+              </table>
+            {%else %}
+            <h3 class="text-center">No votes made for this site yet</h3>
+            <hr>
+            {% endif %}
+        </div>
+      </div>
+</div>
+
+
+
+
+{% endblock %}
