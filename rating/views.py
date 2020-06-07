@@ -72,7 +72,7 @@ def search(request):
         return render(request, 'search.html', {"message":message, "projects":projects, 'profile':profile})
     else:
         message = "anything...make sure you have entered a valid project name"
-        return render(request, 'search.html', {"message":message, "projects":projects,'profile':profile})
+        return render(request, 'search.html', {"message":message})
 
 @login_required(login_url='/accounts/login')
 def project(request, project_id):
