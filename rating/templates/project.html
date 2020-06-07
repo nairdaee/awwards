@@ -9,26 +9,21 @@
   <br>
   <br>
   <div class="row">
-      <div class="col-md-12">
-          <div class="card" >
-              <div class="view overlay">
-                <img class="card-img-top" src="{{project.landing_page.url}}" alt="Card image cap">
-                <a>
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <div class="card-body elegant-color white-text rounded-bottom">
-                <a class="activator waves-effect mr-4"></a>
-                <h4 class="card-title"> {{project.title}}</h4>
-                <hr class="hr-light">
-                <div style="height: 50px">
-                    <p class="card-text white-text mb-4">{{project.description |truncatechars_html:170}}</p>
+      <div class="col-sm-6 offset-sm-6 two">
+          <div class="card" style="background-color: black;" >
+                <img class="card-img-top" src="{{project.landing_page.url}}">
+                <br>
+                <h4 class="card-title" style="color:#a7bc5b;text-align: center;"> {{project.title}}</h4>
+                <hr style="color:#a7bc5b">
+                <div style="color:#a7bc5b">
+                    <p class="card-text" style="color:#a7bc5b">{{project.description |truncatechars_html:170}}</p>
                 </div>
-               
-                <p class="card-text"><strong>By</strong>: {{project.user}}</p>
-                <a href="http://{{project.live_link}}" class="white-text d-flex justify-content-end"><h5>Live site <i class="fas fa-angle-double-right"></i></h5></a>
-            
-              </div>
+                <br>
+                <br>
+                <hr>
+                <br>
+                <p class="view" style="color:#a7bc5b">Owned by:<br><strong>{{project.user}}</strong></p>
+                <a href="{{project.live_link}}" style="color:#a7bc5b" class="view1"><p style="color:#a7bc5b">Live site <i class="fas fa-angle-double-right" style="color:#a7bc5b"></i></p></a>
             
             </div>
       </div>
@@ -41,25 +36,27 @@
    
 
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-            <div class="card border-primary">
-                <div class="card-header">Make a Vote</div>
-                <p>Note that a user can only vote once per project</p>
+        <div class="col-sm-6 offset-sm-6 two">
+            <div class="card border-primary" style="background-color: #a7bc5b;border:none">
+                <div class="card-header" style="text-align: center;"><strong>RATE IT</strong></div>
+                <br>
+                <p style="color:white;text-align: center;"> (You can only rate once)</p>
+                <br>
                 <div class="card-body text-primary">
-                    <form  action="/project/{{project.id}}" method="post" enctype="multipart/form-data" id="votes-form">
+                    <form  style="color:black;margin-right:20%;margin-left:20%;text-align: center;" action="/project/{{project.id}}" method="post" enctype="multipart/form-data" id="votes-form">
                       {%csrf_token%}
                     
                       {% bootstrap_form form%}
                       <div class="text-center">
-                      <input id="votes-input"type="submit" class="btn btn-success btn-lg" value="Post">
-                    </div>
+                        <input id="votes-input"type="submit" style="background-color:black; color:#a7bc5b"class="btn" value="Post">
+                        </div>
                     </form>
                 </div>
               </div>
         </div>
-        <div class="col-md-4">
-            <table class="table table-dark">
+        <div class="col-sm-6 col-2 fixed-top one" style="margin-top: 13%">
+          <h3 style="text-align: center;color:#8DA242"><u>PROJECT RATINGS</u></h3>
+            <table class="table" style="background-color: #a7bc5b;">
               <thead>
                 <tr>
                   <th scope="col">Username</th>
@@ -86,10 +83,10 @@
             {% endfor%}
             </tbody>
             </table>
-            <table class="table table-dark">
+            <table class="table table" style="background-color: #a7bc5b;">
                 <thead>
                   <tr>
-                    <th scope="col">Avarage</th>
+                    <th scope="col">Average</th>
                     <th scope="col">Design</th>
                     <th scope="col">Usability</th>
               
@@ -111,11 +108,14 @@
               </tbody>
               </table>
             {%else %}
-            <h3 class="text-center">No votes made for this site yet</h3>
+            <h3 class="text-center">No ratings made for this project yet</h3>
             <hr>
             {% endif %}
         </div>
       </div>
+      <br>
+      <br>
+      <br>
 </div>
 
 

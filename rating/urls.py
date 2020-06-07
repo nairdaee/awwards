@@ -15,3 +15,6 @@ urlpatterns=[
     url(r'api/projects/project-id/(?P<pk>[0-9]+)/$', views.ProjectDescription.as_view()),
     url(r'api/profiles/profile-id/(?P<pk>[0-9]+)/$', views.ProfileDescription.as_view())
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
