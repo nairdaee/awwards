@@ -15,23 +15,23 @@
 	
 				<div class="profile-image">
 						{% if my_profile %}
-						<img class="img-fluid rounded-circle" src="{{my_profile.profilepic.url}}" alt="profile" height="100" width="150">
+						<img class="img-fluid rounded-circle" style="border-radius:60px;border:4px solid #8da242;width:10%;height:10%" src="{{my_profile.profilepic.url}}" alt="profile">
 				</div>
+				<div class="profile-bio" style="float: right;">
 	
+					<p> Bio:<br> {{i.bio}}</p>
+	
+				</div>
+				<br>
+				<br>
 				<div class="profile-user-settings">
 	
 					<h1 class="profile-user-name">{{my_profile.user}}</h1>
 	
-					<a href="{%url 'edit'%}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+					<a href="{%url 'edit'%}"><button class="btn " style="color:black;background-color:#8da242">EDIT PROFILE</button></a>
 	
 				</div>
 				
-	
-				<div class="profile-bio">
-	
-					<p><span class="profile-real-name">{{user}}</span> {{i.bio}}</p>
-	
-				</div>
 				{%else%}
 				<div class="alert">
 				<p class="animated fadeIn alert alert-info">Update profile first <br>
@@ -44,29 +44,31 @@
 			<!-- End of profile section -->
 	
 		</div>
-		<!-- End of container -->
-	
+		<hr>
+		<br>
 	</header>
     
 <div class="container">
+	<br>
+	<h3 style="text-align:center;color:#8da242;font-size: 30pt;"><u>YOUR PROJECTS</u></h3>
     <br>
     {% if projects %}
-    <div class="row">
+    <div class="photos">
       {% for project in projects %}
-      <div class="col-md-4">
-            <div class="card">
-                    <img class="card-img-top" src="{{project.landing_page.url}}" alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text"><strong>{{project.title}}</strong>: {{project.description | truncatechars_html:170}}</p>
-                      <a href="http://{{project.live_link}}" class="btn btn-primary">Live site</a>
-                      <a href="/project/{{project.id}}" class="btn btn-primary">Review</a>
-                    </div>
-                  </div>
+      <div class="photo" style="background-color: black;">
+			 <h3 style="text-align: center;color:#a7bc5b">{{project.title}}</h3>
+             <img class="card-img-top" src="{{project.landing_page.url}}" alt="Card image cap">
+             <p class="card-text" style="color:#a7bc5b"><strong>{{project.description | truncatechars_html:170}}</p>
+             <a href="http://{{project.live_link}}" class="view">Live site</a>
+             <a href="/project/{{project.id}}" class="view1" style="color:#a7bc5b" >Review</a>
       </div>
       {% endfor %}
     </div>
     {% else %}
-    <p class="animated fadeIn alert alert-info">No projects posted yet <br>
-    {% endif %}
+    <p style="background-color: #8da242;color: black;" class="animated fadeIn alert alert-info">No projects posted yet <br>
+	{% endif %}
+	<br>
+	<br>
+	<br>
 </div>
 {% endblock %}

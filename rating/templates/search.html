@@ -29,13 +29,13 @@
 
     <div class="photos">
       {% for project in projects%}
-       <div class= "photo">
-         <h2 class="head">{{project.title}}</h2>
+       <div class= "photo" style="background-color: black;">
+         <h2 class="head" style="color:#8da242">{{project.title}}</h2>
          <a><img style="width:60%;height:50%;margin-left:10%" src="{{project.landing_page.url}}"></a>
          <hr>
-         <p class="bodies">{{project.description |truncatechars_html:170}}</p>
-         <a class="view" href='http://{{project.live_link}}'>View project</a>
-         <a href="/project/{{project.id}}" class="view2"><span class='owner'> Review</span></a>
+         <p class="bodies" style="color:#8da242;font-size:medium; ">{{project.description |truncatechars_html:170}}</p>
+         <a class="view" href='{{project.live_link}}'>Live link</a>
+         <a href="/project/{{project.id}}" class="view1"><span class='owner'style="color:#8da242;"> Review</span></a>
        </div>
       {% endfor %}
     </div>

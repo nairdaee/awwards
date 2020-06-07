@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content%}
-<h1 style="text-align: center;">Signup</h1>
-
+<br>
+<h1 style="text-align: center;color:#8da242">Signup</h1>
+<hr>
 <form class="site-form" action="/accounts/signup/" method="post">
     {% csrf_token %}
     {{form}}
 <input type="submit" value="Signup">
 
 </form>
+<br>
+<br>
+<br>
 {% endblock%}
 

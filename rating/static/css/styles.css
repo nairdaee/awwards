@@ -50,7 +50,7 @@
 }
 
 .photo{
-    background-color: #7da2a9;
+    background-color:none;
     border-top: 4px dashed #8da242;
     padding:10px;
     border-right: 4px dashed #8da242;
@@ -66,14 +66,7 @@
     top: 50%; left: 50%;
     transform: translate(-50%,-50%);
 }
-  
-p{
-    text-align:Center;
-    font-family: 'Fredoka One', cursive;
-    color:#3498db;
-    font-size:30px;
-    padding:10px;
-}
+
   
 .face{
     width:200px;
@@ -183,4 +176,59 @@ p{
     10%{height:96px;}
     50%{height:96px;}
     52%{height:0px;}
+}
+
+/*Sign up, sign in styling */
+
+
+.site-form {
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 30px;
+    background-color: #8da242;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.site-form input, .site-form textarea{
+    display: block;
+    margin: 20px 0 0px 0;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.site-form input[type="submit"]{
+    background: black;
+    border: 0;
+    color: #8da242;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.errorlist li{
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid #FF5722;
+    border-radius: 40px;
+    margin: 10px;
+    margin-right:50%;
+    color: #FF5722
+}
+
+.errorlist{
+    padding: 0;
+}
+
+.signup1{
+    color:black;
+    background-color: #8da242;
+    border:none;
+}
+.signup{
+    border-radius: 4px;
+    color: black;
+    background-color: #8da242;
+    padding:10px;
+    border: 1px solid #8da242;
 }

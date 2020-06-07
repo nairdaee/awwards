@@ -8,17 +8,19 @@
     
     <div class="row">
       <div class="col-md-4">
-  
+
       </div>
       <div class="col-md-4">
-          <div class="card border-primary">
-              <div class="card-header">Edit Profile</div>
-              <div class="card-body text-primary">
-                  <form  method="post" action="{%url 'edit'%}" enctype="multipart/form-data">
+          <div class="card">
+              <div class="card-header" style="border:none;background-color: black;color:#8da242;text-align: center;">EDIT PROFILE</div>
+              <div class="card-body text-primary" style="background-color: #8da242;">
+                  <form  method="post" style="color:black;padding:20px;" action="{%url 'edit'%}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {%bootstrap_form form%}
                     <div class="form-group w3-center">
-                      <input type="submit" class=" w3-center w3-margin w3-button w3-theme-d5" value="Post">
+                      <br>
+                      <br>
+                      <input type="submit" style="background-color:black; color:#a7bc5b;padding:10px;margin-left:40%;margin-right:30%;border:none" value="Post">
                     </div>
                     <input type="hidden" name="next" value="{{next}}">
                   </form>

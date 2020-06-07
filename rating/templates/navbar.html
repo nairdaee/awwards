@@ -32,8 +32,8 @@
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
-            aria-labelledby="navbarDropdownMenuLink-55">
+          <div class="dropdown-menu dropdown-menu-right dropdown-default"
+            aria-labelledby="navbarDropdownMenuLink-333" style="background: none;border:none;">
             <div class="signup">
                 {%if user.is_authenticated %}    <!--Interchanges login/log out buttons depending on user's state-->
                       <form class="signup1" action="{% url 'accounts:logout' %}" method="post">                          
