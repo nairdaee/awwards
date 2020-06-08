@@ -1,0 +1,234 @@
+.view1{
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    color: black;
+    
+}
+
+@keyframes seepic {
+    0%   {color: black;}
+    25%  {color: #8da242;}
+    50%  {color: black; }
+    75%  {color: #8da242;}
+    100% {color: black;}
+}
+
+.view{
+    padding: 5px;
+    position: absolute;
+    background-color: #8da242;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    color: black;
+    animation-name: seepic;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+.view2{
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    background-color: #8da242;
+    right: 35%;
+    left:35%;
+    bottom: 0;
+    margin: 0;
+    color: black;
+    animation-name: seepic;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.photos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.photo{
+    background-color:none;
+    border-top: 4px dashed #8da242;
+    padding:10px;
+    border-right: 4px dashed #8da242;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+/* sad emoji animation */
+
+.container1{
+    margin-top: 6%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+  
+.face{
+    width:200px;
+    height:230px;
+    border: 9px solid #bdc3c7;
+    border-radius:50%;
+    animation: face 7s infinite;
+    animation-delay:2s;
+    position:relative;
+    z-index:9999;
+}
+  
+  
+.mouth{
+    height:10px;
+    width:35px;
+    margin: 0 auto;
+    margin-top: 45px;
+    background-color:#bdc3c7;
+    animation: mouth 7s infinite;
+    animation-delay:2s;
+}
+  
+.tear{
+    position:absolute;
+    background-color: #8da242;
+    height:0px;
+    width:45px;
+    top:75px;
+    left:29px;
+    border-bottom-left-radius:50%;
+    animation: tear 7s infinite;
+    animation-delay:2s;
+}
+  
+.tear2{
+    position:absolute;
+    background-color: #8da242;
+    height:0px;
+    width:45px;
+    top:75px;
+    left:98px;
+    border-bottom-right-radius:50%;
+    animation: tear 7s infinite;
+    animation-delay:2s;
+}
+  
+.eye{
+    height:10px;
+    width:45px;
+    background-color:#bdc3c7;
+    display:inline-block;
+    margin-left:20px;
+    margin-top:20px;
+    animation: cry 7s infinite;
+    animation-delay:2s;
+}
+  
+.eyebrow{
+    width:30px;
+    font-size:40px;
+    font-weight:bold;
+    color:#bdc3c7;
+    display:inline-block;
+    margin-left:35px;
+    margin-top: 20px;
+    opacity:0;
+    animation: eyebrow 7s infinite;
+    animation-delay:2s;
+}
+  
+.eyebrow:nth-child(1){
+    transform:rotate(-20deg);
+}
+  
+.eyebrow:nth-child(2){
+    transform:rotate(20deg);
+}
+  
+@keyframes mouth{
+    10%{height:30px;width:25px; border:6px solid black;border-radius:50%;margin-top:5px;margin-left:63px;background-color: white;}
+    50%{height:30px;width:25px; border:6px solid black;border-radius:50%;margin-top:5px;margin-left:63px;background-color: white;}
+    60%{height:10px;width:35px;border-radius:0%;border:none;margin-top:45px;background-color: white;}
+    100%{height:10px;width:35px;border-radius:0%;border:none;margin-top:45px;}
+}
+
+  
+@keyframes cry{
+    10%{transform:translateY(-34px);background-color:black;}
+    50%{transform:translateY(-34px);background-color:black;}
+    60%{background-color:#bdc3c7;transform:translateY(0px);}
+}
+  
+@keyframes eyebrow{
+    10%{opacity:1;color:black;}
+    50%{opacity:1;color:black;}
+    60%{opacity:0;}
+}
+  
+@keyframes face{
+    10%{border-color:black;}
+    50%{border-color:black;}
+    60%{border-color:#bdc3c7;}
+}
+  
+@keyframes tear{
+    10%{height:96px;}
+    50%{height:96px;}
+    52%{height:0px;}
+}
+
+/*Sign up, sign in styling */
+
+
+.site-form {
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 30px;
+    background-color: #8da242;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.site-form input, .site-form textarea{
+    display: block;
+    margin: 20px 0 0px 0;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.site-form input[type="submit"]{
+    background: black;
+    border: 0;
+    color: #8da242;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.errorlist li{
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid #FF5722;
+    border-radius: 40px;
+    margin: 10px;
+    margin-right:50%;
+    color: #FF5722
+}
+
+.errorlist{
+    padding: 0;
+}
+
+.signup1{
+    color:black;
+    background-color: #8da242;
+    border:none;
+}
+.signup{
+    border-radius: 4px;
+    color: black;
+    background-color: #8da242;
+    padding:10px;
+    border: 1px solid #8da242;
+}
