@@ -4,3 +4,4 @@ djangorestframework==3.11.0
 Pillow==7.1.2
 psycopg2==2.8.5
 pytz==2020.1
+whitenoise==5.1.0
