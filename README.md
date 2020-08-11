@@ -11,7 +11,7 @@ Adrian Etenyi
 
 ### Description
 This is an app that allows a user to post a project he/she has created and get it reviewed by his/her peers
-
+It can also be rated based on its level of functionality
 ___
 
 ### User stories
@@ -37,10 +37,10 @@ A user is able to:
 
 ### Requirements
 
-`python 3.7.5` _(Python 3.6 - 3.8)_
+`python 3.7.5` _(Python 3.7 - 3.8)_
 
 ```
-    Django==1.11.29
+    Django==1.11.29/ Django==3.0.5
     djangorestframework==3.11.0
     django-bootstrap3==12.1.0
     gunicorn==20.0.4
@@ -52,7 +52,7 @@ A user is able to:
 
 > To install them just use `pip3 install -r requirements.txt`
 
-### DB Configurations
+### DB Configurations (You can also use sqlite as your database)
 
 > Go to postgresql i.e `psql`
  * Create your database `CREATE DATABASE <database name>;`
